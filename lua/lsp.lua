@@ -13,7 +13,15 @@ require('mason-lspconfig').setup({
 })
 
 local lspconfig = require('lspconfig')
-
+lspconfig.ruff.setup({
+     on_attach = function(client, bufnr)
+     end,
+     init_options = {
+       settings = {
+         args = {"--ignore", "E221", "E402"},  -- optional: e.g., { "--ignore", "E501" }
+       },
+     },
+   })
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
